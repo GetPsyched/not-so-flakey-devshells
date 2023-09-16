@@ -12,20 +12,24 @@
           "x86_64-linux"
         ]
           (system: function nixpkgs.legacyPackages.${system});
-    in
-    {
+
+      packages = forAllSystems (pkgs: {
+        default = pkgs.nixpkgs-fmt;
+        vscode = (pkgs.vscode-with-extensions.override {
+          vscode = pkgs.vscodium;
+          vscodeExtensions = with pkgs.vscode-extensions; [
+            jnoortheen.nix-ide
+          ];
+        });
+      });
+
       devShells = forAllSystems (pkgs: {
         default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            nixpkgs-fmt
-            (vscode-with-extensions.override {
-              vscode = vscodium;
-              vscodeExtensions = with vscode-extensions; [
-                jnoortheen.nix-ide
-              ];
-            })
-          ];
+          buildInputs = with packages.${pkgs.system}; [ default vscode ];
         };
       });
+    in
+    {
+      inherit packages devShells;
     };
 }
