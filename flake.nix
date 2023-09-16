@@ -1,5 +1,5 @@
 {
-  description = "Setting LSP for Nix";
+  description = "Nix environment";
 
   outputs = { nixpkgs, ... }:
     let
