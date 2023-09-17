@@ -25,7 +25,7 @@
 
       devShells = forAllSystems (pkgs: {
         default = pkgs.mkShell {
-          buildInputs = with packages.${pkgs.system}; [ default vscode ];
+          buildInputs = with packages.${pkgs.system}; [ pkgs.just default vscode ];
         };
       });
     in
