@@ -23,10 +23,14 @@
           vscode = pkgs.vscodium;
           vscodeExtensions = with pkgs.vscode-extensions; [
             jnoortheen.nix-ide
-            # oven.bun-vscode
-            #   not yet in nixpkgs; don't want to use nix-vscode-extensions
-            #   because it adds a lot of complexity and bombards flake.lock
             svelte.svelte-vscode
+          ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+            {
+              name = "bun-vscode";
+              publisher = "oven";
+              version = "0.0.8";
+              sha256 = "sha256-GJTCn6s9nN3kgbyJ4f1eFm7/fQezW2OmzcbSuYskDnk=";
+            }
           ];
         });
       });
