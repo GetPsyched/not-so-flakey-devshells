@@ -2,9 +2,13 @@
 A compilation of opinionated, minimal flakes that can be extended for customised use.
 
 ## Features
-As of right now, my flakes provide 2 package outputs: `default` and `vscode`.
-1. `default` provides the basic command-line stuff that you would need for the respective language, technology, or whatever the flake is for.
-2. `vscode` provides extension overrides so that you can get a fully featured IDE for your development. Note: I plan to add workspace setting overrides as well but I haven't figured that out yet. Stay tuned.
+1. Zero dependencies.
+2. As of right now, my flakes provide 2 package outputs: `default` and `vscode`.
+   - `default` provides the basic command-line stuff that you would need for the respective language, technology, or whatever the flake is for.
+   - `vscode` provides extension overrides for `vscode` so that you can get a fully featured IDE for your development.<br>
+      Note:
+      - This uses the [`VSCodium`](https://github.com/VSCodium/vscodium) package under-the-hood.
+      - I plan to add workspace setting overrides as well but I haven't figured that out yet. Stay tuned.
 
 ## Installation
 Add the following to your flake inputs:
