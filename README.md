@@ -36,3 +36,30 @@ devShells.${system}.default = pkgs.mkShell {
   ];
 };
 ```
+
+## Example
+```nix
+# flake.nix
+{
+  description = "...";
+
+  inputs = {
+    svelte-env.url = "https://flakehub.com/f/GetPsyched/svelte-env/0.x.x.tar.gz";
+    svelte-env.inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs = inputs@{ nixpkgs, svelte-env, ... }:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      devShells.${system}.default = pkgs.mkShell {
+        buildInputs = with svelte-env.outputs.packages.${system}; [
+          default
+          vscode
+        ];
+      };
+    };
+}
+```
