@@ -2,6 +2,6 @@
 default:
     @just --list --unsorted
 
-# format all nix files
-tag TAG:
+# create a GitHub release with a tag
+release TAG:
     @gh release create v{{TAG}} --generate-notes
