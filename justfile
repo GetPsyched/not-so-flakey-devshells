@@ -3,5 +3,5 @@ default:
     @just --list --unsorted
 
 # create a GitHub release with a tag
-release TAG:
-    @gh release create v{{TAG}} --generate-notes
+release ENV TAG:
+    gh release create "{{ENV}}-v{{TAG}}" --generate-notes
