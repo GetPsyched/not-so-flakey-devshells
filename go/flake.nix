@@ -22,7 +22,7 @@
         vscode = (pkgs.vscode-with-extensions.override {
           vscode = pkgs.vscodium;
           vscodeExtensions = with pkgs.vscode-extensions; [
-            golang.Go
+            golang.go
             jnoortheen.nix-ide
           ];
         });
