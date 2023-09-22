@@ -26,18 +26,8 @@ inputs = {
 };
 ```
 
-## Usage
-My flakes provide `packages` for most systems which you can using inside your `devShells`. Here's how:
-```nix
-devShells.${system}.default = pkgs.mkShell {
-  buildInputs = with inputs.<flake>.outputs.packages.${system}; [
-    default
-    vscode
-  ];
-};
-```
-
 ## Example
+My flakes provide `packages` for most systems which you can using inside your `devShells`. Here's how:
 ```nix
 # flake.nix
 {
