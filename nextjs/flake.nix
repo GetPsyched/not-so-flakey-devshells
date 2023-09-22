@@ -17,7 +17,7 @@
       packages = forAllSystems (pkgs: {
         default = with pkgs; symlinkJoin {
           name = "default";
-          paths = [ nodePackages.pnpm nixpkgs-fmt ];
+          paths = [ nixpkgs-fmt nodejs ];
         };
         vscode = (pkgs.vscode-with-extensions.override {
           vscode = pkgs.vscodium;
