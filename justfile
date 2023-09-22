@@ -2,6 +2,7 @@
 default:
     @just --list --unsorted
 
-# create a GitHub release with a tag
-release ENV TAG:
-    gh release create "{{ENV}}-v{{TAG}}" --generate-notes
+# create a git tag and push it
+tag ENV TAG:
+    git tag {{ENV}}-v{{TAG}}
+    git push --tags
