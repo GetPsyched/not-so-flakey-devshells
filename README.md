@@ -52,12 +52,17 @@ devShells.${system}.default = pkgs.mkShell {
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      svelte-env-pkgs = svelte-env.outputs.packages.${system};
     in
     {
       devShells.${system}.default = pkgs.mkShell {
-        buildInputs = with svelte-env.outputs.packages.${system}; [
-          default
-          vscode
+        buildInputs = [
+          # Your regular imports:
+          pkgs.some-package-from-nixpkgs
+
+          # Packages from my flake:
+          svelte-env-pkgs.default
+          svelte-env-pkgs.vscode
         ];
       };
     };
