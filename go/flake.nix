@@ -17,7 +17,7 @@
       packages = forAllSystems (pkgs: {
         default = with pkgs; symlinkJoin {
           name = "default";
-          paths = [ go nixpkgs-fmt ];
+          paths = [ go gopls nixpkgs-fmt ];
         };
         vscode = (pkgs.vscode-with-extensions.override {
           vscode = pkgs.vscodium;
