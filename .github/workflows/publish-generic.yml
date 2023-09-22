@@ -75,6 +75,6 @@ jobs:
       - uses: "DeterminateSystems/flakehub-push@main"
         with:
           directory: "${{ steps.split.outputs.directory }}"
-          name: "grahamc/getpsyched-test-${{ steps.split.outputs.directory }}-env"
+          name: "GetPsyched/${{ steps.split.outputs.directory }}-env"
           tag: "${{ steps.split.outputs.version }}"
-          visibility: "hidden"
+          visibility: "public"
