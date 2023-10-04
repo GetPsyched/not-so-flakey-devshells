@@ -22,6 +22,7 @@
         vscode = (pkgs.vscode-with-extensions.override {
           vscode = pkgs.vscodium;
           vscodeExtensions = with pkgs.vscode-extensions; [
+            bradlc.vscode-tailwindcss
             esbenp.prettier-vscode
             jnoortheen.nix-ide
           ];
