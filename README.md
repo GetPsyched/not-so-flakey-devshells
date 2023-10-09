@@ -10,6 +10,7 @@ WARNING: This project is under heavy development. Things could break at any time
    - `vscode` provides extension overrides for `vscode` so that you can get a fully featured IDE for your development.<br>
       Note:
       - This uses the [`VSCodium`](https://github.com/VSCodium/vscodium) package under-the-hood.
+      - `vscode` is a function that you need to call with a list of extensions (see [here](https://github.com/GetPsyched/nix-starter-flakes/blob/0dae2d00d8f447cdff4489ef7c1eecb074dc872e/flake.nix#L19-L25) for reference.)
       - I plan to add workspace setting overrides as well but I haven't figured that out yet. Stay tuned.
 
 ## Installation
@@ -52,7 +53,7 @@ My flakes provide `packages` for most systems which you can using inside your `d
 
           # Packages from my flake:
           svelte-env-pkgs.default
-          svelte-env-pkgs.vscode
+          (svelte-env-pkgs.vscode [ ])
         ];
       };
     };
