@@ -1,5 +1,23 @@
 {
   "nodes": {
+    "nix-env": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "narHash": "sha256-z+fKP3kuAD/k+wMoJEo1xA6tGGKwCjGS0sFPIfKBIiU=",
+        "rev": "0233fee5fd77709aa8efd2366b9b614b4d9bb6ec",
+        "revCount": 22,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/GetPsyched/nix-env/0.2.1/018aa30e-892d-77a6-b0ae-40aa73f3299c/source.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://flakehub.com/f/GetPsyched/nix-env/0.x.x.tar.gz"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1694422566,
@@ -15,6 +33,7 @@
     },
     "root": {
       "inputs": {
+        "nix-env": "nix-env",
         "nixpkgs": "nixpkgs"
       }
     }

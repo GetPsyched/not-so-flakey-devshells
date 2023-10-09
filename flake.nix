@@ -1,35 +1,24 @@
 {
-  description = "Nix environment";
+  description = "Environment for this project";
 
-  outputs = { nixpkgs, ... }:
+  inputs = {
+    nix-env.url = "https://flakehub.com/f/GetPsyched/nix-env/0.x.x.tar.gz";
+    nix-env.inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs = inputs@{ nixpkgs, nix-env, ... }:
     let
-      forAllSystems = function:
-        nixpkgs.lib.genAttrs [
-          "aarch64-darwin"
-          "aarch64-linux"
-          "i686-linux"
-          "x86_64-darwin"
-          "x86_64-linux"
-        ]
-          (system: function nixpkgs.legacyPackages.${system});
-
-      packages = forAllSystems (pkgs: {
-        default = pkgs.nixpkgs-fmt;
-        vscode = (pkgs.vscode-with-extensions.override {
-          vscode = pkgs.vscodium;
-          vscodeExtensions = with pkgs.vscode-extensions; [
-            jnoortheen.nix-ide
-          ];
-        });
-      });
-
-      devShells = forAllSystems (pkgs: {
-        default = pkgs.mkShell {
-          buildInputs = with packages.${pkgs.system}; [ pkgs.just default vscode ];
-        };
-      });
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+      nix-env-pkgs = nix-env.outputs.packages.${system};
     in
     {
-      inherit packages devShells;
+      devShells.${system}.default = pkgs.mkShell {
+        buildInputs = with nix-env-pkgs; [
+          default
+          vscode
+          pkgs.just
+        ];
+      };
     };
 }
