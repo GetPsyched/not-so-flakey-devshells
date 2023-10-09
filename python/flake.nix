@@ -30,6 +30,9 @@
                 ms-python.python
               ] ++ extensions;
             })
+
+            # Fix for: https://discourse.nixos.org/t/interactive-bash-with-nix-develop-flake/15486
+            bashInteractive
           ];
         });
       });
