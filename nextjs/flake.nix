@@ -19,12 +19,17 @@
           name = "default";
           paths = [ nixpkgs-fmt nodejs ];
         };
-        vscode = (pkgs.vscode-with-extensions.override {
-          vscode = pkgs.vscodium;
-          vscodeExtensions = with pkgs.vscode-extensions; [
-            bradlc.vscode-tailwindcss
-            esbenp.prettier-vscode
-            jnoortheen.nix-ide
+        vscode = (extensions: with pkgs; symlinkJoin {
+          name = "vscode";
+          paths = [
+            (vscode-with-extensions.override {
+              vscode = vscodium;
+              vscodeExtensions = with vscode-extensions; [
+                bradlc.vscode-tailwindcss
+                esbenp.prettier-vscode
+                jnoortheen.nix-ide
+              ] ++ extensions;
+            })
           ];
         });
       });

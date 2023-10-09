@@ -7,23 +7,26 @@
         ]
       },
       "locked": {
-        "narHash": "sha256-z+fKP3kuAD/k+wMoJEo1xA6tGGKwCjGS0sFPIfKBIiU=",
-        "rev": "0233fee5fd77709aa8efd2366b9b614b4d9bb6ec",
-        "revCount": 22,
-        "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/GetPsyched/nix-env/0.2.1/018aa30e-892d-77a6-b0ae-40aa73f3299c/source.tar.gz"
+        "dir": "nix",
+        "dirtyRev": "b693f95d2bb69b24931b47edfa8bb721c3604c18-dirty",
+        "dirtyShortRev": "b693f95-dirty",
+        "lastModified": 1696842342,
+        "narHash": "sha256-3zeL7FPEWKdPw+I+tfGORUOcnNfSk1gqm9K7yZGfsNY=",
+        "type": "git",
+        "url": "file:///home/getpsyched/git/nix-starter-flakes?dir=nix"
       },
       "original": {
-        "type": "tarball",
-        "url": "https://flakehub.com/f/GetPsyched/nix-env/0.x.x.tar.gz"
+        "dir": "nix",
+        "type": "git",
+        "url": "file:///home/getpsyched/git/nix-starter-flakes?dir=nix"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1694422566,
-        "narHash": "sha256-lHJ+A9esOz9vln/3CJG23FV6Wd2OoOFbDeEs4cMGMqc=",
-        "path": "/nix/store/zb2695k9v4hmjdki97p0yhd4mys270fs-source",
-        "rev": "3a2786eea085f040a66ecde1bc3ddc7099f6dbeb",
+        "lastModified": 1695644571,
+        "narHash": "sha256-asS9dCCdlt1lPq0DLwkVBbVoEKuEuz+Zi3DG7pR/RxA=",
+        "path": "/nix/store/i6hq63805y784dml4j8pgkrz3lryxzld-source",
+        "rev": "6500b4580c2a1f3d0f980d32d285739d8e156d92",
         "type": "path"
       },
       "original": {

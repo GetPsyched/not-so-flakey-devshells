@@ -16,10 +16,15 @@
     {
       packages = forAllSystems (pkgs: {
         default = pkgs.nixpkgs-fmt;
-        vscode = (pkgs.vscode-with-extensions.override {
-          vscode = pkgs.vscodium;
-          vscodeExtensions = with pkgs.vscode-extensions; [
-            jnoortheen.nix-ide
+        vscode = (extensions: with pkgs; symlinkJoin {
+          name = "vscode";
+          paths = [
+            (vscode-with-extensions.override {
+              vscode = vscodium;
+              vscodeExtensions = with vscode-extensions; [
+                jnoortheen.nix-ide
+              ] ++ extensions;
+            })
           ];
         });
       });

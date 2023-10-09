@@ -19,11 +19,16 @@
           name = "default";
           paths = [ go gopls nixpkgs-fmt ];
         };
-        vscode = (pkgs.vscode-with-extensions.override {
-          vscode = pkgs.vscodium;
-          vscodeExtensions = with pkgs.vscode-extensions; [
-            golang.go
-            jnoortheen.nix-ide
+        vscode = (extensions: with pkgs; symlinkJoin {
+          name = "vscode";
+          paths = [
+            (vscode-with-extensions.override {
+              vscode = vscodium;
+              vscodeExtensions = with vscode-extensions; [
+                golang.go
+                jnoortheen.nix-ide
+              ] ++ extensions;
+            })
           ];
         });
       });

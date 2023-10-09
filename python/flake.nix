@@ -19,12 +19,17 @@
           name = "default";
           paths = [ python311 nixpkgs-fmt ];
         };
-        vscode = (pkgs.vscode-with-extensions.override {
-          vscode = pkgs.vscodium;
-          vscodeExtensions = with pkgs.vscode-extensions; [
-            jnoortheen.nix-ide
-            ms-pyright.pyright
-            ms-python.python
+        vscode = (extensions: with pkgs; symlinkJoin {
+          name = "vscode";
+          paths = [
+            (vscode-with-extensions.override {
+              vscode = vscodium;
+              vscodeExtensions = with vscode-extensions; [
+                jnoortheen.nix-ide
+                ms-pyright.pyright
+                ms-python.python
+              ] ++ extensions;
+            })
           ];
         });
       });
