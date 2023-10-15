@@ -19,20 +19,10 @@
           name = "default";
           paths = [ python311 nixpkgs-fmt ];
         };
-        vscode = (extensions: with pkgs; symlinkJoin {
-          name = "vscode";
-          paths = [
-            (vscode-with-extensions.override {
-              vscode = vscodium;
-              vscodeExtensions = with vscode-extensions; [
-                jnoortheen.nix-ide
-                ms-pyright.pyright
-                ms-python.python
-              ] ++ extensions;
-            })
-
-            # Fix for: https://discourse.nixos.org/t/interactive-bash-with-nix-develop-flake/15486
-            bashInteractive
+        vscode = (pkgs.callPackage ../vscode.nix {
+          extensions = with pkgs.vscode-extensions; [
+            ms-pyright.pyright
+            ms-python.python
           ];
         });
       });

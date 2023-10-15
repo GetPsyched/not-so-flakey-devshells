@@ -19,27 +19,17 @@
           name = "default";
           paths = [ bun nixpkgs-fmt ];
         };
-        vscode = (extensions: with pkgs; symlinkJoin {
-          name = "vscode";
-          paths = [
-            (vscode-with-extensions.override {
-              vscode = vscodium;
-              vscodeExtensions = with vscode-extensions; [
-                esbenp.prettier-vscode
-                jnoortheen.nix-ide
-                svelte.svelte-vscode
-              ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-                {
-                  name = "bun-vscode";
-                  publisher = "oven";
-                  version = "0.0.8";
-                  sha256 = "sha256-GJTCn6s9nN3kgbyJ4f1eFm7/fQezW2OmzcbSuYskDnk=";
-                }
-              ] ++ extensions;
-            })
-
-            # Fix for: https://discourse.nixos.org/t/interactive-bash-with-nix-develop-flake/15486
-            bashInteractive
+        vscode = (pkgs.callPackage ../vscode.nix {
+          extensions = with pkgs.vscode-extensions; [
+            esbenp.prettier-vscode
+            svelte.svelte-vscode
+          ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+            {
+              name = "bun-vscode";
+              publisher = "oven";
+              version = "0.0.8";
+              sha256 = "sha256-GJTCn6s9nN3kgbyJ4f1eFm7/fQezW2OmzcbSuYskDnk=";
+            }
           ];
         });
       });
