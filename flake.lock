@@ -8,10 +8,10 @@
       },
       "locked": {
         "dir": "nix",
-        "dirtyRev": "b693f95d2bb69b24931b47edfa8bb721c3604c18-dirty",
-        "dirtyShortRev": "b693f95-dirty",
-        "lastModified": 1696842342,
-        "narHash": "sha256-3zeL7FPEWKdPw+I+tfGORUOcnNfSk1gqm9K7yZGfsNY=",
+        "dirtyRev": "ea89bf0d8c547df46c6bfcd7eec7b64fc7238d81-dirty",
+        "dirtyShortRev": "ea89bf0-dirty",
+        "lastModified": 1696846958,
+        "narHash": "sha256-9v5aJkq9wut12U/VXJhTrwpK8fgcIB6PU7d6j50ia2g=",
         "type": "git",
         "url": "file:///home/getpsyched/git/nix-starter-flakes?dir=nix"
       },
