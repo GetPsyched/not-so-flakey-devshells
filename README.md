@@ -1,4 +1,7 @@
 # nix-starter-flakes
+
+[![FlakeHub](https://img.shields.io/endpoint?url=https://flakehub.com/f/DeterminateSystems/fh/badge)](https://flakehub.com/flake/DeterminateSystems/fh)
+
 A compilation of opinionated, minimal flakes that can be extended for customised use.
 
 WARNING: This project is under heavy development. Things could break at any time. Please wait for v1.x.x
