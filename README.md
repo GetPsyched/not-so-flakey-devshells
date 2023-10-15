@@ -4,7 +4,8 @@
 
 A compilation of opinionated, minimal flakes that can be extended for customised use.
 
-WARNING: This project is under heavy development. Things could break at any time. Please wait for v1.x.x
+> **Warning**
+> This project is under heavy development. Things could break at any time. Please wait for v1.x.x
 
 ## Features
 1. Zero dependencies.
