@@ -28,7 +28,7 @@ inputs = {
 ```
 
 ## Example
-My flakes provide `packages` for most systems which you can using inside your `devShells`. Here's how:
+My flakes provide `packages` for most systems which you can use inside your `devShells`. Here's how:
 ```nix
 # flake.nix
 {
