@@ -22,7 +22,7 @@
         vscode = (pkgs.callPackage ../vscode.nix {
           extensions = with pkgs.vscode-extensions; [
             ms-pyright.pyright
-            ms-python.python
+            (pkgs.callPackage ./ms-python.python.nix { })
           ];
         });
       });
