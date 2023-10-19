@@ -2,6 +2,7 @@
 , vscode-utils
 , icu
 , python3
+, python311
   # When `true`, the python default setting will be fixed to specified.
   # Use version from `PATH` for default setting otherwise.
   # Defaults to `false` as we expect it to be project specific most of the time.
@@ -28,7 +29,7 @@ vscode-utils.buildVscodeMarketplaceExtension rec {
 
   nativeBuildInputs = [ python3.pkgs.wrapPython ];
 
-  propagatedBuildInputs = with python3.pkgs; [
+  propagatedBuildInputs = with python311.pkgs; [
     debugpy
     jedi-language-server
   ];
@@ -37,7 +38,7 @@ vscode-utils.buildVscodeMarketplaceExtension rec {
     # remove bundled python deps and use libs from nixpkgs
     rm -r pythonFiles/lib
     mkdir -p pythonFiles/lib/python/
-    ln -s ${python3.pkgs.debugpy}/lib/*/site-packages/debugpy pythonFiles/lib/python/
+    ln -s ${python311.pkgs.debugpy}/lib/*/site-packages/debugpy pythonFiles/lib/python/
     buildPythonPath "$propagatedBuildInputs"
     for i in pythonFiles/*.py; do
       patchPythonScript "$i"
