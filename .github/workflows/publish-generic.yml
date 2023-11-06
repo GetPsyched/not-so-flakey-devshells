@@ -2,7 +2,7 @@ name: "Publish releases to FlakeHub"
 on:
   push:
     tags:
-      - "[a-zA-Z0-9]+-v?[0-9]+.[0-9]+.[0-9]+*"
+      - "v?[0-9]+.[0-9]+.[0-9]+*"
   workflow_dispatch:
     inputs:
       tag:
@@ -16,65 +16,12 @@ jobs:
       id-token: "write"
       contents: "read"
     steps:
-      - uses: actions/github-script@v6
-        id: split
-        env:
-          INPUT_TAG: "${{ inputs.tag }}"
-        with:
-          script: |
-            "use strict";
-            const extractTagFromRef = (ref) => {
-                if (ref.startsWith("refs/tags/")) {
-                    const parts = ref.split("/");
-                    if (parts.length != 3) {
-                        console.log(`Tried to extract a tag from '${ref}' but it didn't split by '/' into three parts.`);
-                        return undefined;
-                    }
-                    return parts[2];
-                }
-                else {
-                    console.log(`Tried to extract a tag from '${ref}' but it didn't start with 'refs/tags/'`);
-                    return undefined;
-                }
-            };
-            const extractVersionDirectory = (ref, tag) => {
-                const selected_tag = tag || extractTagFromRef(ref);
-                if (!selected_tag) {
-                    console.log(`No valid tag identified from the ref ('${ref}') or inputs ('${input_tag}').`);
-                    return undefined;
-                }
-                const parts = selected_tag.split('-');
-                if (parts.length != 2) {
-                    console.log(`The tag '${selected_tag}' didn't split by '-' into two parts, where the first part should be the directory and the second should be the version.`);
-                    return undefined;
-                }
-                return {
-                    directory: parts[0],
-                    version: parts[1],
-                    full_ref: `refs/tags/${parts[0]}-${parts[1]}`,
-                };
-            };
-
-            const input_tag = process.env['INPUT_TAG'];
-            const ref = context?.ref;
-
-            const result = extractVersionDirectory(ref, input_tag);
-            if (result) {
-                core.setOutput("directory", result.directory);
-                core.setOutput("version", result.version);
-                core.setOutput("full_ref", result.full_ref);
-            }
-            else
-                process.exit(1);
-
       - uses: "actions/checkout@v3"
         with:
-          ref: "${{ steps.split.outputs.full_ref }}"
-
+          ref: "${{ (inputs.tag != null) && format('refs/tags/{0}', inputs.tag) || '' }}"
       - uses: "DeterminateSystems/nix-installer-action@main"
       - uses: "DeterminateSystems/flakehub-push@main"
         with:
-          directory: "${{ steps.split.outputs.directory }}"
-          name: "GetPsyched/${{ steps.split.outputs.directory }}-env"
-          tag: "${{ steps.split.outputs.version }}"
+          name: "GetPsyched/nix-starter-flakes"
+          tag: "${{ inputs.tag }}"
           visibility: "public"
