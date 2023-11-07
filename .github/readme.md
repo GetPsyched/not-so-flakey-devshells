@@ -1,6 +1,6 @@
 # not-so-flakey-devshells
 
-[![FlakeHub](https://img.shields.io/endpoint?url=https://flakehub.com/f/DeterminateSystems/fh/badge)](https://flakehub.com/flake/DeterminateSystems/fh)
+[![FlakeHub](https://img.shields.io/endpoint?url=https://flakehub.com/f/DeterminateSystems/fh/badge)](https://flakehub.com/flake/GetPsyched/not-so-flakey-devshells)
 
 A compilation of opinionated, minimal dev packages that can be extended for customised use.
 
