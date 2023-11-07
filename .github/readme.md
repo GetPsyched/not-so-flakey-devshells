@@ -1,4 +1,4 @@
-# nix-starter-flakes
+# not-so-flakey-devshells
 
 [![FlakeHub](https://img.shields.io/endpoint?url=https://flakehub.com/f/DeterminateSystems/fh/badge)](https://flakehub.com/flake/DeterminateSystems/fh)
 
@@ -25,7 +25,7 @@ inputs = {
   <flake>.inputs.nixpkgs.follows = "nixpkgs";
 
   # using GitHub
-  <flake>.url = "github:GetPsyched/nix-starter-flakes";
+  <flake>.url = "github:GetPsyched/not-so-flakey-devshells";
   <flake>.inputs.nixpkgs.follows = "nixpkgs";
 };
 ```
