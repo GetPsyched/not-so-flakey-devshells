@@ -1,6 +1,6 @@
 { pkgs }:
 {
-  default = with pkgs; [ nixpkgs-fmt nodejs ];
+  default = with pkgs; [ nodejs ];
   vscode = {
     extensions = with pkgs.vscode-extensions; [
       bradlc.vscode-tailwindcss

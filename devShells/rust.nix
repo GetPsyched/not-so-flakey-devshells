@@ -1,6 +1,6 @@
 { pkgs }:
 {
-  default = with pkgs; [ nixpkgs-fmt rustup ];
+  default = with pkgs; [ rustup ];
   vscode = {
     extensions = with pkgs.vscode-extensions; [
       bungcip.better-toml

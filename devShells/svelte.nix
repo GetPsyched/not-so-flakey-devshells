@@ -1,6 +1,6 @@
 { pkgs }:
 {
-  default = with pkgs; [ bun nixpkgs-fmt ];
+  default = with pkgs; [ bun ];
   vscode = {
     extensions = with pkgs.vscode-extensions; [
       esbenp.prettier-vscode

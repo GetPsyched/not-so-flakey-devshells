@@ -1,6 +1,6 @@
 { pkgs }:
 {
-  default = with pkgs; [ python311 nixpkgs-fmt ];
+  default = with pkgs; [ python311 ];
   vscode = {
     extensions = with pkgs.vscode-extensions; [
       ms-pyright.pyright
