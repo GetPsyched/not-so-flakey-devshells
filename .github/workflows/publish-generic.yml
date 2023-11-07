@@ -22,6 +22,6 @@ jobs:
       - uses: "DeterminateSystems/nix-installer-action@main"
       - uses: "DeterminateSystems/flakehub-push@main"
         with:
-          name: "GetPsyched/nix-starter-flakes"
+          name: "GetPsyched/not-so-flakey-devshells"
           tag: "${{ inputs.tag }}"
           visibility: "public"
