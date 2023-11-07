@@ -1,5 +1,5 @@
 {
-  description = "Nix environment";
+  description = "Configure dev shells for any language/framework";
 
   outputs = { nixpkgs, ... }:
     let
