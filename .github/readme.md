@@ -22,11 +22,11 @@ Add the following to your flake inputs:
 ```nix
 inputs = {
   # using FlakeHub
-  <flake>.url = "https://flakehub.com/f/GetPsyched/<flake>/0.x.x.tar.gz";
+  <flake>.url = "https://flakehub.com/f/GetPsyched/not-so-flakey-devshells/0.x.x.tar.gz";
   <flake>.inputs.nixpkgs.follows = "nixpkgs";
 
   # using GitHub
-  <flake>.url = "github:GetPsyched/nix-starter-flakes?dir=<flake-dir>";
+  <flake>.url = "github:GetPsyched/nix-starter-flakes";
   <flake>.inputs.nixpkgs.follows = "nixpkgs";
 };
 ```
@@ -39,15 +39,15 @@ My flakes provide `packages` for most systems which you can use inside your `dev
   description = "...";
 
   inputs = {
-    svelte-env.url = "https://flakehub.com/f/GetPsyched/svelte-env/0.x.x.tar.gz";
-    svelte-env.inputs.nixpkgs.follows = "nixpkgs";
+    flakey-devShells.url = "https://flakehub.com/f/GetPsyched/not-so-flakey-devshells/0.x.x.tar.gz";
+    flakey-devShells.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ nixpkgs, svelte-env, ... }:
+  outputs = inputs@{ nixpkgs, flakey-devShells, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      svelte-env-pkgs = svelte-env.outputs.packages.${system};
+      flakey-devShell-pkgs = flakey-devShells.outputs.packages.${system};
     in
     {
       devShells.${system}.default = pkgs.mkShell {
@@ -56,8 +56,8 @@ My flakes provide `packages` for most systems which you can use inside your `dev
           pkgs.some-package-from-nixpkgs
 
           # Packages from my flake:
-          svelte-env-pkgs.default
-          (svelte-env-pkgs.vscode.override {
+          flakey-devShell-pkgs.svelte-default
+          (flakey-devShell-pkgs.svelte-vscode.override {
             extensions = with pkgs.vscode-extensions; [
               some-publisher.some-extension
             ];
