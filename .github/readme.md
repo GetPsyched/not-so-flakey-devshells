@@ -21,12 +21,12 @@ Add the following to your flake inputs:
 ```nix
 inputs = {
   # using FlakeHub
-  <flake>.url = "https://flakehub.com/f/GetPsyched/not-so-flakey-devshells/0.x.x.tar.gz";
-  <flake>.inputs.nixpkgs.follows = "nixpkgs";
+  flakey-devShells.url = "https://flakehub.com/f/GetPsyched/not-so-flakey-devshells/0.x.x.tar.gz";
+  flakey-devShells.inputs.nixpkgs.follows = "nixpkgs";
 
   # using GitHub
-  <flake>.url = "github:GetPsyched/not-so-flakey-devshells";
-  <flake>.inputs.nixpkgs.follows = "nixpkgs";
+  flakey-devShells.url = "github:GetPsyched/not-so-flakey-devshells";
+  flakey-devShells.inputs.nixpkgs.follows = "nixpkgs";
 };
 ```
 
