@@ -9,11 +9,10 @@ A compilation of opinionated, minimal dev packages that can be extended for cust
 
 ## Features
 1. Zero dependencies.
-2. As of right now, my flake provide 2 package outputs: `default` and `vscode`.
+2. As of right now, my flake provide 2 package outputs: `default` and `vscodium`.
    - `default` provides the basic command-line stuff that you would need for the respective language, technology, or whatever the flake is for.
-   - `vscode` provides extension overrides for `vscode` so that you can get a fully featured IDE for your development.<br>
+   - `vscodium` provides extension overrides for VSCodium so that you can get a fully featured IDE for your development.<br>
       Note:
-      - This uses the [`VSCodium`](https://github.com/VSCodium/vscodium) package under-the-hood.
       - You can override this package to append additional extensions, if you wish. See [the example below](#example).
       - I plan to add workspace setting overrides as well but I haven't figured that out yet. Stay tuned.
 
@@ -57,7 +56,7 @@ My flakes provide `packages` for most systems which you can use inside your `dev
 
           # Packages from my flake:
           (flakey-devShell-pkgs.default.override { environments = [ "nix" "svelte" ]; })
-          (flakey-devShell-pkgs.vscode.override {
+          (flakey-devShell-pkgs.vscodium.override {
             # This will install an opinionated list of extensions.
             environments = [ "nix" "svelte" ];
 

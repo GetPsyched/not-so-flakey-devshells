@@ -1,7 +1,7 @@
 { pkgs }:
 {
   default = with pkgs; [ go gopls ];
-  vscode = {
+  vscodium = {
     extensions = with pkgs.vscode-extensions; [
       golang.go
     ];

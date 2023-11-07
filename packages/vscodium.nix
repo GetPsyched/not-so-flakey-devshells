@@ -1,7 +1,7 @@
 { extensions ? [ ], pkgs, ... }:
 
 with pkgs; symlinkJoin {
-  name = "vscode";
+  name = "vscodium";
   paths = [
     (vscode-with-extensions.override {
       vscode = vscodium;

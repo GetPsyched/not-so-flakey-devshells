@@ -1,7 +1,7 @@
 { pkgs }:
 {
   default = with pkgs; [ bun ];
-  vscode = {
+  vscodium = {
     extensions = with pkgs.vscode-extensions; [
       esbenp.prettier-vscode
       svelte.svelte-vscode

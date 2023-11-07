@@ -20,8 +20,8 @@
           paths = builtins.concatMap (env: (import ./devShells/${env}.nix { inherit pkgs; }).default) environments;
         }) { };
 
-        vscode = ({ environments ? [ "nix" ] }: callPackage ./packages/vscode.nix {
-          extensions = (builtins.concatMap (env: (import ./devShells/${env}.nix { inherit pkgs; }).vscode.extensions) environments);
+        vscodium = ({ environments ? [ "nix" ] }: callPackage ./packages/vscodium.nix {
+          extensions = (builtins.concatMap (env: (import ./devShells/${env}.nix { inherit pkgs; }).vscodium.extensions) environments);
         }) { };
       });
     };

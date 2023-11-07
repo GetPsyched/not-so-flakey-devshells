@@ -1,7 +1,7 @@
 { pkgs }:
 {
   default = with pkgs; [ rustup ];
-  vscode = {
+  vscodium = {
     extensions = with pkgs.vscode-extensions; [
       bungcip.better-toml
       matklad.rust-analyzer
