@@ -21,7 +21,7 @@
         }) { };
 
         vscodium = ({ environments ? [ "nix" ] }: callPackage ./packages/vscodium.nix {
-          extensions = (builtins.concatMap (env: (import ./devShells/${env}.nix { inherit pkgs; }).vscodium.extensions) environments);
+          envExtensions = (builtins.concatMap (env: (import ./devShells/${env}.nix { inherit pkgs; }).vscodium.extensions) environments);
         }) { };
       });
     };

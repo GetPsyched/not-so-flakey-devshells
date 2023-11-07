@@ -1,11 +1,11 @@
-{ extensions ? [ ], pkgs, ... }:
+{ envExtensions ? [ ], extensions ? [ ], pkgs, ... }:
 
 with pkgs; symlinkJoin {
   name = "vscodium";
   paths = [
     (vscode-with-extensions.override {
       vscode = vscodium;
-      vscodeExtensions = extensions;
+      vscodeExtensions = envExtensions ++ extensions;
     })
 
     # Fix for: https://discourse.nixos.org/t/interactive-bash-with-nix-develop-flake/15486
