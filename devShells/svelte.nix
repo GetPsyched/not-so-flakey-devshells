@@ -1,10 +1,7 @@
 { pkgs }:
 {
-  svelte-default = with pkgs; symlinkJoin {
-    name = "default";
-    paths = [ bun nixpkgs-fmt ];
-  };
-  svelte-vscode = (pkgs.callPackage ../packages/vscode.nix {
+  default = with pkgs; [ bun nixpkgs-fmt ];
+  vscode = {
     extensions = with pkgs.vscode-extensions; [
       esbenp.prettier-vscode
       svelte.svelte-vscode
@@ -16,5 +13,5 @@
         sha256 = "sha256-GJTCn6s9nN3kgbyJ4f1eFm7/fQezW2OmzcbSuYskDnk=";
       }
     ];
-  });
+  };
 }

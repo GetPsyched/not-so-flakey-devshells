@@ -1,13 +1,10 @@
 { pkgs }:
 {
-  rust-default = with pkgs; symlinkJoin {
-    name = "default";
-    paths = [ nixpkgs-fmt rustup ];
-  };
-  rust-vscode = (pkgs.callPackage ../packages/vscode.nix {
+  default = with pkgs; [ nixpkgs-fmt rustup ];
+  vscode = {
     extensions = with pkgs.vscode-extensions; [
       bungcip.better-toml
       matklad.rust-analyzer
     ];
-  });
+  };
 }

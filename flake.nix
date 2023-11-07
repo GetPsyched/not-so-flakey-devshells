@@ -12,20 +12,19 @@
           "x86_64-linux"
         ]
           (system: function nixpkgs.legacyPackages.${system});
-
-      mkEnv = env: pkgs: import ./devShells/${env}.nix { inherit pkgs; };
     in
     {
-      packages = forAllSystems (pkgs: {
-        default = pkgs.nixpkgs-fmt;
-        vscode = (pkgs.callPackage ./packages/vscode.nix { });
-      }
-      // (mkEnv "cpp" pkgs)
-      // (mkEnv "go" pkgs)
-      // (mkEnv "nextjs" pkgs)
-      // (mkEnv "python" pkgs)
-      // (mkEnv "rust" pkgs)
-      // (mkEnv "svelte" pkgs)
-      );
+      packages = forAllSystems (pkgs: with pkgs; {
+        default = ({ environments ? [ ] }: symlinkJoin {
+          name = "default";
+          paths = [
+            nixpkgs-fmt
+          ] ++ builtins.concatMap (env: (import ./devShells/${env}.nix { inherit pkgs; }).default) environments;
+        }) { };
+
+        vscode = ({ environments ? [ ] }: callPackage ./packages/vscode.nix {
+          extensions = (builtins.concatMap (env: (import ./devShells/${env}.nix { inherit pkgs; }).vscode.extensions) environments);
+        }) { };
+      });
     };
 }

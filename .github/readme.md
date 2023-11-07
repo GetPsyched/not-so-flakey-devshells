@@ -2,14 +2,14 @@
 
 [![FlakeHub](https://img.shields.io/endpoint?url=https://flakehub.com/f/DeterminateSystems/fh/badge)](https://flakehub.com/flake/DeterminateSystems/fh)
 
-A compilation of opinionated, minimal flakes that can be extended for customised use.
+A compilation of opinionated, minimal dev packages that can be extended for customised use.
 
 > **Warning**
 > This project is under heavy development. Things could break at any time. Please wait for v1.x.x
 
 ## Features
 1. Zero dependencies.
-2. As of right now, my flakes provide 2 package outputs: `default` and `vscode`.
+2. As of right now, my flake provide 2 package outputs: `default` and `vscode`.
    - `default` provides the basic command-line stuff that you would need for the respective language, technology, or whatever the flake is for.
    - `vscode` provides extension overrides for `vscode` so that you can get a fully featured IDE for your development.<br>
       Note:
@@ -56,8 +56,12 @@ My flakes provide `packages` for most systems which you can use inside your `dev
           pkgs.some-package-from-nixpkgs
 
           # Packages from my flake:
-          flakey-devShell-pkgs.svelte-default
-          (flakey-devShell-pkgs.svelte-vscode.override {
+          (flakey-devShell-pkgs.default.override { environments = [ "nix" "svelte" ]; })
+          (flakey-devShell-pkgs.vscode.override {
+            # This will install an opinionated list of extensions.
+            environments = [ "nix" "svelte" ];
+
+            # If you don't want those or want to add a missing one for your workflow, do it here
             extensions = with pkgs.vscode-extensions; [
               some-publisher.some-extension
             ];

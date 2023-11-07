@@ -1,12 +1,9 @@
 { pkgs }:
 {
-  go-default = with pkgs; symlinkJoin {
-    name = "default";
-    paths = [ go gopls nixpkgs-fmt ];
-  };
-  go-vscode = (pkgs.callPackage ../packages/vscode.nix {
+  default = with pkgs; [ go gopls nixpkgs-fmt ];
+  vscode = {
     extensions = with pkgs.vscode-extensions; [
       golang.go
     ];
-  });
+  };
 }

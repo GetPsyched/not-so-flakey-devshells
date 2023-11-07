@@ -1,13 +1,10 @@
 { pkgs }:
 {
-  python-default = with pkgs; symlinkJoin {
-    name = "default";
-    paths = [ python311 nixpkgs-fmt ];
-  };
-  python-vscode = (pkgs.callPackage ../packages/vscode.nix {
+  default = with pkgs; [ python311 nixpkgs-fmt ];
+  vscode = {
     extensions = with pkgs.vscode-extensions; [
       ms-pyright.pyright
       (pkgs.callPackage ../packages/ms-python.python.nix { })
     ];
-  });
+  };
 }
