@@ -15,14 +15,12 @@
     in
     {
       packages = forAllSystems (pkgs: with pkgs; {
-        default = ({ environments ? [ ] }: symlinkJoin {
+        default = ({ environments ? [ "nix" ] }: symlinkJoin {
           name = "default";
-          paths = [
-            nixpkgs-fmt
-          ] ++ builtins.concatMap (env: (import ./devShells/${env}.nix { inherit pkgs; }).default) environments;
+          paths = builtins.concatMap (env: (import ./devShells/${env}.nix { inherit pkgs; }).default) environments;
         }) { };
 
-        vscode = ({ environments ? [ ] }: callPackage ./packages/vscode.nix {
+        vscode = ({ environments ? [ "nix" ] }: callPackage ./packages/vscode.nix {
           extensions = (builtins.concatMap (env: (import ./devShells/${env}.nix { inherit pkgs; }).vscode.extensions) environments);
         }) { };
       });

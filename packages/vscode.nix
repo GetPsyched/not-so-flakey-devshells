@@ -5,9 +5,7 @@ with pkgs; symlinkJoin {
   paths = [
     (vscode-with-extensions.override {
       vscode = vscodium;
-      vscodeExtensions = with vscode-extensions; [
-        jnoortheen.nix-ide
-      ] ++ extensions;
+      vscodeExtensions = extensions;
     })
 
     # Fix for: https://discourse.nixos.org/t/interactive-bash-with-nix-develop-flake/15486
