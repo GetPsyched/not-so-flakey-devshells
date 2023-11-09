@@ -4,7 +4,7 @@ pkgs.mkShell {
   nativeBuildInputs = with pkgs.buildPackages; [
     just
     nixpkgs-fmt
-    (callPackage ./packages/vscode.nix {
+    (callPackage ./packages/vscodium.nix {
       extensions = vscode-utils.extensionsFromVscodeMarketplace [{
         name = "vscode-yaml";
         publisher = "redhat";
