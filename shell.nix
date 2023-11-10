@@ -5,7 +5,9 @@ pkgs.mkShell {
     just
     nixpkgs-fmt
     (callPackage ./packages/vscodium.nix {
-      extensions = vscode-utils.extensionsFromVscodeMarketplace [{
+      extensions = with pkgs.vscode-extensions; [
+        jnoortheen.nix-ide
+      ] ++ vscode-utils.extensionsFromVscodeMarketplace [{
         name = "vscode-yaml";
         publisher = "redhat";
         version = "1.14.0";
