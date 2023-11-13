@@ -17,11 +17,8 @@
     in
     {
       packages = forAllSystems (pkgs: with pkgs; {
-        default = ({ environments ? [ "nix" ] }: callPackage ./packages/default.nix { inherit environments; }) { };
-
-        vscodium = ({ environments ? [ "nix" ] }: callPackage ./packages/vscodium.nix {
-          envExtensions = (builtins.concatMap (env: (import ./devShells/${env}.nix { inherit pkgs; }).vscodium.extensions) environments);
-        }) { };
+        default = callPackage ./packages/default.nix { };
+        vscodium = callPackage ./packages/vscodium.nix { };
       });
     };
 }

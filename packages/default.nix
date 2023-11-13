@@ -1,4 +1,4 @@
-{ environments, pkgs, ... }:
+{ environments ? [ "nix" ], pkgs, ... }:
 
 with pkgs; symlinkJoin {
   name = "default";
