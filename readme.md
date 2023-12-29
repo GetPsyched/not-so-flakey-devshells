@@ -9,7 +9,7 @@ A compilation of opinionated, minimal dev packages that can be extended for cust
 
 ## Features
 1. Zero dependencies.
-2. As of right now, my flake provide 2 package outputs: `default` and `vscodium`.
+2. As of right now, my flake provides 2 package outputs: `default` and `vscodium`.
    - `default` provides the basic command-line stuff that you would need for the respective language, technology, or whatever the flake is for.
    - `vscodium` provides extension overrides for [VSCodium](https://github.com/VSCodium/vscodium) so that you can get a fully featured IDE for your development.<br>
       Note:
@@ -31,7 +31,7 @@ inputs = {
 ```
 
 ## Example
-My flakes provide `packages` for most systems which you can use inside your `devShells`. Here's how:
+My flake provides `packages` for most systems which you can use inside your `devShells`. Here's how:
 ```nix
 # flake.nix
 {
