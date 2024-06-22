@@ -4,7 +4,7 @@
   vscodium = {
     extensions = with pkgs.vscode-extensions; [
       bungcip.better-toml
-      matklad.rust-analyzer
+      rust-lang.rust-analyzer
     ];
   };
 }
